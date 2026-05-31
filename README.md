@@ -1,4 +1,4 @@
-![Version](https://img.shields.io/badge/version-0.1.0--alpha-orange)  
+![Version](https://img.shields.io/badge/version-0.2.0--alpha-orange)  
 ![Java](https://img.shields.io/badge/java-25.0.3-blue?logo=openjdk)  
 ![Gradle](https://img.shields.io/badge/gradle-8.14-02303A?logo=gradle)  
 
