@@ -4,7 +4,7 @@
 
 # What is LFTR
 
-LFTR (Local File Transfer Routine) aims to be a quick, lightweight and cross-platform solution to share files within local networks. This repository hosts an experimental version of the project, featuring both `client`
+LFTR (Local File Transfer Routine) is a one-man project intended to be a quick, lightweight and cross-platform solution to share files within local networks. This repository hosts an experimental version of the project, featuring both `client`
 and `server` implementations and a CLI for the client.
 
 # Prerequisites
