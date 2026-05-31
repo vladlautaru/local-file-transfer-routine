@@ -5,6 +5,32 @@ plugins {
 group = 'ro.vladlautaru'
 version = '1.0-SNAPSHOT'
 
+tasks.register('clientJar', Jar) {
+    archiveBaseName = 'client'
+    archiveVersion = ''
+    manifest {
+        attributes(
+                'Main-Class': 'io.vladlautaru.client.ClientMain'
+        )
+    }
+    from sourceSets.main.output
+    destinationDirectory = file('jar')
+}
+
+tasks.register('serverJar', Jar) {
+    archiveBaseName = 'server'
+    archiveVersion = ''
+    manifest {
+        attributes(
+                'Main-Class': 'io.vladlautaru.server.ServerMain'
+        )
+    }
+    from sourceSets.main.output
+    destinationDirectory = file('jar')
+}
+
+assemble.dependsOn clientJar, serverJar
+
 repositories {
     mavenCentral()
 }
