@@ -28,19 +28,24 @@ public class ServerMain {
             return;
         }
 
-        int timeout = 60000;
+        int timeout;
+        try {
+            timeout = ArgsProvider.getTimeoutInMilliseconds(argsMap);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
 
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("Server running on port " + port);
             serverSocket.setSoTimeout(timeout);
-            System.out.println("Timeout set to " + (timeout / 60000) + " minute(s).");
 
             System.out.print("Awaiting client connection...");
             Socket clientSocket = serverSocket.accept();
 
             System.out.print(" Client connected.");
         } catch (SocketTimeoutException e) {
-            System.out.println("Server socket timed out.");
+            System.out.println(" Server socket timed out.");
         } catch (IOException e) {
             System.out.println("error: couldn't start server socket on port " + port);
         } catch (IllegalArgumentException e) {

@@ -16,4 +16,16 @@ public class ArgsValidator {
         int LAST_PORT = 65536;
         return port >= FIRST_PORT && port <= LAST_PORT;
     }
+
+    public static boolean validateTimeoutInSeconds(int timeoutS) {
+        int MIN_TIMEOUT = 60;
+        int MAX_TIMEOUT = 2147460;
+        return timeoutS >= MIN_TIMEOUT && timeoutS <= MAX_TIMEOUT;
+    }
+
+    public static boolean validateTimeoutInMinutes(int timeoutM) {
+        int MIN_TIMEOUT = 1;
+        int MAX_TIMEOUT = 35791;
+        return timeoutM >= MIN_TIMEOUT && timeoutM <= MAX_TIMEOUT;
+    }
 }
