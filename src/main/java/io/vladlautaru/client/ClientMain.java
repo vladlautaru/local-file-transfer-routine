@@ -1,35 +1,44 @@
 package io.vladlautaru.client;
 
+import io.vladlautaru.helper.ArgsParser;
+import io.vladlautaru.helper.ArgsValidator;
+
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Map;
 
 public class ClientMain {
-    private static String getHost(String[] args) throws IllegalArgumentException{
-        List<String> argsList = Arrays.asList(args);
-        int flagIndex = argsList.indexOf("-h");
-
-        if (flagIndex == -1) {
+    private static String getHost(Map<String, String> args) throws IllegalArgumentException {
+        if (!args.containsKey("-h")) {
             return "127.0.0.1";
         }
 
-        int hostIndex = flagIndex + 1;
-        if (hostIndex >= argsList.size()) {
+        String host = args.get("-h");
+
+        if (!ArgsValidator.validateIpv4Address(host)) {
             throw new IllegalArgumentException("error: invalid host address provided");
         }
 
-        return argsList.get(hostIndex);
+        return host;
     }
 
     public static void main(String[] args) {
+        Map<String, String> argsMap;
+
+        try {
+            argsMap = ArgsParser.parse(args);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+
         System.out.println("This is the client program");
 
         String host = "127.0.0.1";
 
         try {
-            host = getHost(args);
+            host = getHost(argsMap);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

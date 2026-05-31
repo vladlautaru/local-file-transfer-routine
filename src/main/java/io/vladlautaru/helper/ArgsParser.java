@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ArgsParser {
-    public static Map<String, String> parseArgs(String[] args) throws IllegalArgumentException {
+    public static Map<String, String> parse(String[] args) throws IllegalArgumentException {
         Map<String, String> argsMap = new HashMap<>();
 
         for (int i = 0; i < args.length; i++) {
