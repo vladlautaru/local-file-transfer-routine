@@ -10,4 +10,10 @@ public class ArgsValidator {
         Matcher matcher = pattern.matcher(address);
         return matcher.matches();
     }
+
+    public static boolean validateDestPort(int port) {
+        int FIRST_PORT = 1024;
+        int LAST_PORT = 65536;
+        return port >= FIRST_PORT && port <= LAST_PORT;
+    }
 }
