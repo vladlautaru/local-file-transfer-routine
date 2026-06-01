@@ -19,17 +19,11 @@ public class ClientMain {
             return;
         }
 
-        ClientSocket socket;
+        ClientSocketWrapper clientSocketWrapper;
 
         try {
-            socket = new ClientSocket(host, port);
-        } catch (RuntimeException e) {
-            System.out.println(e.getMessage());
-            return;
-        }
-
-        try {
-            socket.closeSocket();
+            clientSocketWrapper = new ClientSocketWrapper(host, port);
+            clientSocketWrapper.closeSocket();
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
             return;

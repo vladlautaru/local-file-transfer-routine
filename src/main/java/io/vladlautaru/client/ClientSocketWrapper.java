@@ -4,37 +4,32 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class ClientSocket {
-    private final String host;
-    private final int port;
-
+public class ClientSocketWrapper {
     private final Socket socket;
 
-    public ClientSocket(String host, int port) throws RuntimeException {
-        this.host = host;
-        this.port = port;
+    public ClientSocketWrapper(String host, int port) throws RuntimeException {
 
         try {
-            socket = new Socket(this.host, this.port);
+            this.socket = new Socket(host, port);
             String confirmConnectionMessage =
                     String.format(
                             "Server at %s:%d found. Client started on port %d",
-                            this.host,
-                            this.port,
-                            socket.getLocalPort()
+                            host,
+                            port,
+                            this.socket.getLocalPort()
                     );
             System.out.println(confirmConnectionMessage);
         } catch (UnknownHostException e) {
-            throw new RuntimeException("error: unknown host " + this.host);
+            throw new RuntimeException("error: unknown host " + host);
         } catch (IOException e) {
             String error = String.format(
                     "error: couldn't connect to server at %s:%d",
-                    this.host,
-                    this.port
+                    host,
+                    port
             );
             throw new RuntimeException(error);
         } catch (IllegalArgumentException e) {
-            throw new RuntimeException("error: invalid port " + this.port);
+            throw new RuntimeException("error: invalid port " + port);
         }
     }
 
