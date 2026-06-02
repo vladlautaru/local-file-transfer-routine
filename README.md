@@ -16,31 +16,37 @@ and `server` implementations and a CLI for the client.
 
 1. Clone this repository:
 
-```
-git clone https://github.com/vladlautaru/local-file-transfer-routine.git
-```
+    ```bash
+    git clone https://github.com/vladlautaru/local-file-transfer-routine.git
+    ```
 
 2. Change directory to project root:
 
-```
-cd local-file-transfer-routine
-```
+    ```bash
+    cd local-file-transfer-routine
+    ```
 
 3. Build using:
 
-```
-./gradlew build
-```
+    ```bash
+    ./gradlew build
+    ```
 
-This should create a new `jar` directory, with two JAR files inside: `client.jar` and `server.jar`.
+    This should create a new `jar` directory, with two JAR files inside: `client.jar` and `server.jar`.
+    
+    *Warning*: you might be required to change permissions in order for `gradlew` to run:
+
+    ```bash
+    sudo chmod +x gradlew
+    ```
 
 4. Run either JAR by using:
 
-```
-cd jar
-java -jar client.jar
-```
-or
-```
-java -jar jar/client.jar
-```
+    ```bash
+    cd jar
+    java -jar client.jar
+    ```
+    or
+    ```bash
+    java -jar jar/client.jar
+    ```
